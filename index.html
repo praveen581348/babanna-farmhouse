@@ -1,1 +1,295 @@
-<h1>Babanna Farmhouse - Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babanna Farmhouse | Idagunji Homestay</title>
+    <meta name="description" content="Affordable and safe homestay near Idagunji Temple. Perfect for families, groups, and students travelling between Murudeshwar and Honavara.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Baloo+Tamma+2:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- THEME COLORS (Nature & Temple) --- */
+        :root {
+            --primary: #2e7d32;   /* Farm Green */
+            --accent: #fbc02d;    /* Temple Yellow */
+            --dark: #1b5e20;      /* Dark Green */
+            --light: #e8f5e9;     /* Light Green BG */
+            --white: #ffffff;
+            --text: #333333;
+        }
+
+        /* --- GLOBAL SETUP --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif; /* English Font */
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Kannada Font Class */
+        .kn { font-family: 'Baloo Tamma 2', cursive; color: var(--dark); font-weight: 700; }
+
+        /* --- HEADER & HERO --- */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav h1 { font-size: 1.5rem; margin-bottom: 5px; }
+        nav .sub-head { font-size: 0.9rem; color: var(--accent); }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596325983808-812328766468?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .hero .tagline { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent); font-weight: bold; }
+        
+        .cta-btn {
+            background-color: var(--accent);
+            color: #000;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- SECTIONS --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 { color: var(--primary); font-size: 2rem; }
+        .section-title p { color: #666; }
+
+        /* --- STORY / TIPS SECTION (Your Requirement) --- */
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column; /* Mobile first */
+        }
+        .story-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .story-content { padding: 25px; }
+        .story-content h3 { color: var(--dark); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .story-content .kn-text { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; display: block; }
+
+        @media(min-width: 768px) {
+            .story-card { flex-direction: row; align-items: center; }
+            .story-card.reverse { flex-direction: row-reverse; }
+            .story-img { width: 40%; height: auto; min-height: 250px; }
+            .story-content { width: 60%; }
+        }
+
+        /* --- FACILITIES GRID (From Image) --- */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .facility-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+        .facility-box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .facility-box i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+        .facility-box h4 { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; }
+        .facility-box .kn-small { font-size: 0.85rem; color: var(--dark); }
+
+        /* --- CONTACT & MAP --- */
+        .contact-section {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .phone-numbers {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+        }
+
+        footer { text-align: center; padding: 20px; background: #111; color: #888; font-size: 0.8rem; }
+        
+        /* Utility */
+        .highlight { background-color: #fffde7; padding: 2px 5px; border-radius: 4px; border-bottom: 2px solid var(--accent); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>Babanna Farmhouse</h1>
+    <div class="sub-head kn">ಬಾಬಣ್ಣ ಫಾರ್ಮ್‌ಹೌಸ್, ಇಡಗುಂಜಿ</div>
+</nav>
+
+<header class="hero">
+    <h2>1 Acre Coconut Farm Stay</h2>
+    <div class="tagline kn">ನಿಸರ್ಗದ ಮಡಿಲಲ್ಲಿ ಒಂದು ಸುಂದರ ತಾಣ</div>
+    <p>Located between Murudeshwar & Honavara</p>
+    <br>
+    <a href="tel:+917338498962" class="cta-btn"><i class="fas fa-phone-alt"></i> Call Now / ಕರೆ ಮಾಡಿ</a>
+</header>
+
+<div class="container">
+    <div class="section-title">
+        <h2>Why Stay Here? / ಇಲ್ಲಿ ಏಕೆ ಉಳಿಯಬೇಕು?</h2>
+        <p>Expert tips for your coastal trip</p>
+    </div>
+
+    <div class="story-card">
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1582260275747-d16c5264b971?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-content">
+            <h3><i class="fas fa-route"></i> The Perfect Stopover</h3>
+            <span class="kn-text">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರ ಮಧ್ಯೆ ಪ್ರವಾಸ ಮಾಡುತ್ತಿದ್ದೀರಾ?</span>
+            <p>If you are travelling the coastal belt between Murudeshwar and Honavar, this is the right place to halt. Stay here comfortably and travel around to visit beaches, temples, and boating spots.</p>
+        </div>
+    </div>
+
+    <div class="story-card reverse">
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1559869680-36934c5625d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-content">
+            <h3><i class="fas fa-users"></i> Fun for Groups</h3>
+            <span class="kn-text">ಗುಂಪುಗಳಿಗೆ ಮತ್ತು ಸ್ನೇಹಿತರಿಗೆ ಅಚ್ಚುಮೆಚ್ಚು</span>
+            <p>Are you in a group and want to spend nice time? You can <strong>cook outside within the gate</strong> and enjoy the privacy of our 1-acre coconut farm. We have dormitory options specifically for groups.</p>
+        </div>
+    </div>
+
+    <div class="story-card">
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1614531853037-d1a123f46f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-content">
+            <h3><i class="fas fa-child"></i> Safe for Families</h3>
+            <span class="kn-text">ಕುಟುಂಬಗಳಿಗೆ ಸುರಕ್ಷಿತ ಮತ್ತು ಸುಸಜ್ಜಿತ</span>
+            <p>Travelling with kids? We are a safe, gated property. We provide all essentials: <strong>Hot water, Kettle, Chairs, Cots, and Mattresses.</strong> Just relax and feel at home.</p>
+        </div>
+    </div>
+
+    <div class="story-card reverse">
+        <div class="story-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Idagunji_Ganesha_Temple.jpg/640px-Idagunji_Ganesha_Temple.jpg');"></div>
+        <div class="story-content">
+            <h3><i class="fas fa-walking"></i> Walk to Temple</h3>
+            <span class="kn-text">ಇಡಗುಂಜಿ ದೇವಸ್ಥಾನಕ್ಕೆ ನಡೆದುಕೊಂಡು ಹೋಗುವಷ್ಟು ಹತ್ತಿರ</span>
+            <p>We are very close to the Sri Idagunji Mahaganapathi Temple. Stay overnight, take a fresh morning Darshana, and continue your journey. We have spacious parking for your vehicles.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="background: white; border-radius: 20px;">
+    <div class="section-title">
+        <h2>Facilities / ಸೌಲಭ್ಯಗಳು</h2>
+        <span class="kn">ಕಡಿಮೆ ದರ, ಉತ್ತಮ ಸೌಲಭ್ಯ (Very Low Price!)</span>
+    </div>
+
+    <div class="facilities-grid">
+        <div class="facility-box">
+            <i class="fas fa-parking"></i>
+            <h4>Spacious Parking</h4>
+            <div class="kn-small">ವಿಶಾಲವಾದ ಪಾರ್ಕಿಂಗ್</div>
+        </div>
+        <div class="facility-box">
+            <i class="fas fa-restroom"></i>
+            <h4>Hygienic Restrooms</h4>
+            <div class="kn-small">ಶುಚಿತ್ವದ ಶೌಚಾಲಯ</div>
+            <small>(+ Extra outside restrooms)</small>
+        </div>
+        <div class="facility-box">
+            <i class="fas fa-bed"></i>
+            <h4>Comfortable Boarding</h4>
+            <div class="kn-small">ಆರಾಮದಾಯಕ ವಸತಿ</div>
+        </div>
+        <div class="facility-box">
+            <i class="fas fa-utensils"></i>
+            <h4>Self-Cook Kitchen</h4>
+            <div class="kn-small">ಅಡುಗೆ ಸೌಲಭ್ಯ</div>
+        </div>
+        <div class="facility-box">
+            <i class="fas fa-users"></i>
+            <h4>Dormitory for Groups</h4>
+            <div class="kn-small">ಗುಂಪು ವಸತಿ</div>
+        </div>
+        <div class="facility-box">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>School/College Trips</h4>
+            <div class="kn-small">ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರವಾಸ</div>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section" id="contact">
+    <h2>Contact Us / ಸಂಪರ್ಕಿಸಿ</h2>
+    <p>Rooms available now! Don't waste money elsewhere.</p>
+    
+    <div class="phone-numbers">
+        <a href="tel:+917338498962" style="color:var(--accent); text-decoration:none;">+91 73384 98962</a>
+        <a href="tel:+919743640036" style="color:var(--accent); text-decoration:none;">+91 97436 40036</a>
+    </div>
+
+    <p style="margin-top: 20px;">
+        <strong>Address:</strong><br>
+        Babanna Farmhouse, Idagunji Rd,<br>
+        Kulimane, Melin-Idgunji, Karnataka 581423
+    </p>
+
+    <div class="map-container container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.7!2d74.5!3d14.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDE4JzAwLjAiTiA3NMKwMjknNjAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+        <p style="margin-top:10px;"><small><i>(Click "Directions" on the map to reach us)</i></small></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Babanna Farmhouse. <br> Maintained by DevOps Engineering.</p>
+</footer>
+
+</body>
+</html>
