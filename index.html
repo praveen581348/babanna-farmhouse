@@ -1,303 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Babanna Farmhouse|Honnavar - Murudeshwara</title>
-    <meta name="description" content="Babanna Farmhouse - Safe, affordable homestay near Idagunji Temple. Perfect for families & groups. Between Murudeshwar and Honavara.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo+Tamma+2:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Babanna Farmhouse | Nature Homestay in Idagunji</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo+Tamma+2:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* --- THEME COLORS --- */
         :root {
-            --primary: #2e7d32;   /* Forest Green */
-            --accent: #ffb300;    /* Temple Gold */
-            --dark: #1b5e20;      /* Deep Green */
-            --bg: #f1f8e9;        /* Very Light Green */
-            --text: #333333;
+            --primary: #2e7d32;
+            /* Forest Green */
+            --accent: #ffb300;
+            /* Temple Gold */
+            --dark: #1b5e20;
+            /* Dark Green */
+            --light: #f1f8e9;
+            /* Soft Green Background */
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* --- GLOBAL RESET --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: var(--light);
+            color: #333;
+            overflow-x: hidden;
         }
-        .kn { font-family: 'Baloo Tamma 2', cursive; font-weight: 700; color: var(--dark); }
-        a { text-decoration: none; }
 
-        /* --- HERO SECTION --- */
+        .kn {
+            font-family: 'Baloo Tamma 2', cursive;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(27, 94, 32, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        nav .book-btn {
+            background: var(--accent);
+            color: #000;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* --- HERO SLIDESHOW --- */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596325983808-812328766468?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            min-height: 90vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
             color: white;
+            margin-top: 50px;
+
+            /* ADD YOUR IMAGE HERE */
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                /* Dark overlay for text readability */
+                url('babanna_photo.jpg');
+            /* Replace 'imgback.png' with your file name or link */
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Optional: Makes image stay still while scrolling */
         }
 
-        .brand-name {
-            font-size: 2.8rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            margin-bottom: 5px;
-            line-height: 1.2;
-            color: var(--accent);
-        }
-        .brand-sub {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        /* --- GLASS CONTACT CARD --- */
-        .contact-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 25px 20px;
-            border-radius: 20px;
+        /* Background Slider Images */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            border-top: 5px solid var(--accent);
-            color: var(--text);
-            animation: slideUp 0.8s ease-out;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: -1;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1.02);
+            transition: transform 6s linear, opacity 1s;
         }
 
-        .phone-display { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-        .phone-btn {
-            background: var(--dark); color: white; padding: 12px; border-radius: 8px;
-            font-size: 1.1rem; font-weight: bold; display: flex; justify-content: center;
-            align-items: center; gap: 10px; transition: 0.3s;
-        }
-        .phone-btn:hover { background: var(--primary); transform: scale(1.02); }
-
-        .address-text { font-size: 0.9rem; color: #555; margin-bottom: 15px; border-top: 1px solid #eee; padding-top: 10px; }
-
-        /* --- MAP BUTTON --- */
-        .map-btn {
-            background: linear-gradient(45deg, #1e88e5, #1565c0);
-            color: white; width: 100%; padding: 15px; border-radius: 50px;
-            font-weight: bold; font-size: 1.1rem; display: inline-block;
-            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
         }
 
-        /* --- HIGHLIGHTS BAR (New) --- */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .brand-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.2;
+        }
+
+        .brand-subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero-contact a {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark);
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-contact a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- HIGHLIGHTS BAR --- */
         .highlights-bar {
-            background: var(--accent); color: var(--dark); padding: 15px;
-            text-align: center; font-weight: bold; font-size: 1.1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--accent);
+            color: #000;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- SECTIONS --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .section-title { text-align: center; margin-bottom: 30px; }
-        .section-title h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 5px; }
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-        /* --- STORY CARDS --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- STORY CARDS GRID --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* Desktop: Alternating Layout */
+        @media (min-width: 768px) {
+            .story-card {
+                display: flex;
+                align-items: center;
+            }
+
+            .story-card:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+
+            .story-img {
+                flex: 1;
+                height: 280px;
+            }
+
+            .story-content {
+                flex: 1.2;
+                padding: 30px;
+            }
+        }
+
         .story-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px;
-            border-left: 6px solid var(--primary);
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            opacity: 0;
+            transform: translateY(30px);
+            /* For Animation */
+            transition: transform 0.3s;
         }
-        .story-content { padding: 25px; }
-        .story-content h3 { color: var(--dark); display: flex; align-items: center; gap: 10px; margin-bottom: 5px; font-size: 1.3rem; }
-        .story-content .kn-head { color: var(--primary); font-size: 1.1rem; margin-bottom: 10px; display: block; font-weight: bold; }
-        .story-content p { margin-bottom: 10px; color: #444; }
-        .highlight-tag { background: #fff8e1; color: #f57f17; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- FACILITIES GRID --- */
-        .facilities-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px; text-align: center;
+        .story-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .facility-box {
-            background: white; padding: 15px; border-radius: 12px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05); border: 1px solid transparent;
-        }
-        .facility-box i { font-size: 1.8rem; color: var(--primary); margin-bottom: 8px; }
-        .facility-box h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
-        .facility-box .kn-small { font-size: 0.8rem; color: #555; }
 
-        footer { background: #222; color: #aaa; text-align: center; padding: 30px 20px; font-size: 0.9rem; }
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-img {
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        .story-content h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .story-content .kn-head {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .highlight-tag {
+            background: #fff8e1;
+            color: #f57f17;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* --- AMENITIES SLIDER (Marquee) --- */
+        .facilities-section {
+            background: white;
+            padding: 40px 0;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+        }
+
+        .slider-track {
+            display: flex;
+            width: calc(200px * 14);
+            animation: scroll 25s linear infinite;
+        }
+
+        .slide {
+            width: 200px;
+            padding: 15px;
+            text-align: center;
+            background: var(--light);
+            margin: 0 10px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .slide i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-200px * 7 - 20px * 7));
+            }
+        }
+
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <header class="hero">
-        <div class="brand-name">Babanna Farmhouse</div>
-        <div class="brand-sub kn">ಬಾಬಣ್ಣ ಫಾರ್ಮ್‌ಹೌಸ್</div>
+    <nav>
+        <div class="logo">BABANNA FARMHOUSE</div>
 
-        <div class="contact-card">
-            <div class="phone-display">
-                <a href="tel:+917338498962" class="phone-btn">
-                    <i class="fas fa-phone-alt"></i> +91 73384 98962
-                </a>
-                <a href="tel:+919743640036" class="phone-btn">
-                    <i class="fas fa-phone-alt"></i> +91 97436 40036
-                </a>
-            </div>
-            <div class="address-text">
-                <i class="fas fa-map-marker-alt" style="color:var(--primary)"></i> 
-                Idagunji Rd, Honnavara,Uttara Kannada, Karnataka 581423
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Babanna+Farmhouse+Idagunji+Karnataka" target="_blank" class="map-btn">
-                <i class="fas fa-location-arrow"></i> Open Map / ಲೊಕೇಶನ್
-            </a>
+    </nav>
+
+    <header class="hero">
+    <div class="hero-content">
+        <div class="brand-title">Babanna Farmhouse</div>
+        <div class="brand-subtitle kn">ಬಾಬಣ್ಣ ಫಾರ್ಮ್‌ಹೌಸ್</div>
+        <p style="font-size: 1.1rem; margin-bottom: 20px;">Safe, Simple & Nature-Friendly Homestay</p>
+        
+        <div class="hero-contact">
+            <a href="tel:+917338498962"><i class="fas fa-phone-alt"></i> 73384 98962</a>
+            <a href="tel:+919743640036"><i class="fas fa-phone-alt"></i> 97436 40036</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Babanna+Farmhouse+Idagunji+Karnataka" target="_blank"><i class="fas fa-map-marker-alt"></i> Location</a>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="highlights-bar kn">
-        <i class="fas fa-clock"></i> Reach in 15 Mins from Murudeshwar & Honavara <br>
-        <span style="font-size:0.9rem">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರದಿಂದ ಕೇವಲ 15 ನಿಮಿಷಗಳು</span>
+        <i class="fas fa-road"></i> Located Exactly Between Murudeshwar & Honavara <br>
+        <span style="font-size:0.9rem;">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರದಿಂದ ಕೇವಲ 15 ನಿಮಿಷಗಳು</span>
     </div>
 
     <div class="container">
-        
         <div class="section-title">
             <h2>Why Stay Here? / ಇಲ್ಲಿ ಏಕೆ ಉಳಿಯಬೇಕು?</h2>
         </div>
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-map-marked-alt"></i> The Perfect Stopover</h3>
-                <span class="kn-head kn">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರ ಮಧ್ಯೆ ಪ್ರವಾಸ ಮಾಡುತ್ತಿದ್ದೀರಾ?</span>
-                <p><strong><i class="fas fa-check-circle" style="color:green"></i> Reach within 15 minutes!</strong></p>
-                <p>If you are travelling the coastal belt between Murudeshwar and Honavara, this is the right place to halt. We are located exactly in the middle, so you can reach either city quickly.</p>
-                <p class="kn">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರಕ್ಕೆ ಕೇವಲ 15 ನಿಮಿಷಗಳಲ್ಲಿ ತಲುಪಬಹುದು. ಇದು ಪ್ರವಾಸಿಗರಿಗೆ ಉಳಿದುಕೊಳ್ಳಲು ಅತ್ಯಂತ ಸೂಕ್ತ ಸ್ಥಳವಾಗಿದೆ.</p>
-            </div>
-        </div>
+        <div class="story-grid">
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-umbrella-beach"></i> Near Beaches & Travel Spots</h3>
-                <span class="kn-head kn">ಹೊನ್ನಾವರ ಮತ್ತು ಮಂಕಿ ಬೀಚ್‌ಗಳಿಗೆ ಹತ್ತಿರ</span>
-                <p>Stay here comfortably and travel around! We are very near to <strong>Honavara Backwaters, Eco Beach, and Manki Beach.</strong></p>
-                <p>Travel wherever you want during the day and come back to a peaceful stay at night.</p>
-                <p class="kn">ಇಲ್ಲಿ ಉಳಿದುಕೊಂಡು ನೀವು ಹೊನ್ನಾವರ ಬೋಟಿಂಗ್, ಇಕೋ ಬೀಚ್ ಮತ್ತು ಮಂಕಿ ಬೀಚ್‌ಗಳಿಗೆ ಸುಲಭವಾಗಿ ಹೋಗಬಹುದು.</p>
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-map-marked-alt"></i> The Perfect Stopover</h3>
+                    <span class="kn-head kn">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರ ಮಧ್ಯೆ</span>
+                    <p><strong>Reach within 15 minutes!</strong> If you are travelling the coastal belt, this is the
+                        best place to halt. We are located exactly in the middle.</p>
+                    <p class="kn">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರಕ್ಕೆ ಕೇವಲ 15 ನಿಮಿಷಗಳಲ್ಲಿ ತಲುಪಬಹುದು.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-rupee-sign"></i> Low Price & Safe for Families</h3>
-                <span class="kn-head kn">ಕಡಿಮೆ ದರದಲ್ಲಿ ಕುಟುಂಬದೊಂದಿಗೆ ಉಳಿಯಿರಿ</span>
-                <p><span class="highlight-tag">Save Money!</span> Why waste money simply for staying? Stay here at a <strong>very low price</strong> with your family and friends.</p>
-                <p>Travelling with kids? We are a <strong>safe, gated property</strong>. We provide Hot water, Kettle, Chairs, Cots, and Mattresses. Just relax and feel at home.</p>
-                <p class="kn">ಕುಟುಂಬ ಮತ್ತು ಮಕ್ಕಳೊಂದಿಗೆ ಸುರಕ್ಷಿತವಾಗಿ ಉಳಿಯಲು ಇದು ಉತ್ತಮ ಸ್ಥಳ. ಬಿಸಿ ನೀರು, ಮಂಚ ಮತ್ತು ಹಾಸಿಗೆ ಸೌಲಭ್ಯವಿದೆ.</p>
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-umbrella-beach"></i> Near Beaches</h3>
+                    <span class="kn-head kn">ಹೊನ್ನಾವರ ಮತ್ತು ಮಂಕಿ ಬೀಚ್‌ಗಳಿಗೆ ಹತ್ತಿರ</span>
+                    <p>Stay here comfortably and travel around! Very near to <strong>Honavara Backwaters, Eco Beach, and
+                            Manki Beach.</strong></p>
+                    <p class="kn">ಇಲ್ಲಿ ಉಳಿದುಕೊಂಡು ನೀವು ಬೀಚ್‌ಗಳಿಗೆ ಸುಲಭವಾಗಿ ಹೋಗಬಹುದು.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-users"></i> Fun for Groups</h3>
-                <span class="kn-head kn">ಸ್ನೇಹಿತರ ಗುಂಪುಗಳಿಗೆ ಅಚ್ಚುಮೆಚ್ಚು</span>
-                <p>Are you in a group? You can <strong>cook outside within the gate</strong> and enjoy privacy in our 1-acre coconut farm. We have dormitory options specifically for groups.</p>
-                <p class="kn">ಸ್ನೇಹಿತರೊಂದಿಗೆ ಬಂದರೆ, ನೀವೇ ಅಡುಗೆ ಮಾಡಿಕೊಂಡು ನಮ್ಮ ತೋಟದಲ್ಲಿ ಆನಂದಿಸಬಹುದು.</p>
+            <div class="story-card scroll-animate">
+                
+                <div class="story-content">
+                    <h3><i class="fas fa-rupee-sign"></i> Low Price & Safe</h3>
+                    <span class="kn-head kn">ಕಡಿಮೆ ದರದಲ್ಲಿ ಕುಟುಂಬದೊಂದಿಗೆ ಉಳಿಯಿರಿ</span>
+                    <p><span class="highlight-tag">Save Money!</span> Don't waste money on luxury hotels. Stay here at a
+                        <strong>budget-friendly price</strong> with your family.</p>
+                    <p class="kn">ಕುಟುಂಬ ಮತ್ತು ಮಕ್ಕಳೊಂದಿಗೆ ಸುರಕ್ಷಿತವಾಗಿ ಉಳಿಯಲು ಇದು ಉತ್ತಮ ಸ್ಥಳ.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-gopuram"></i> Walk to Temple</h3>
-                <span class="kn-head kn">ಇಡಗುಂಜಿ ದೇವಸ್ಥಾನಕ್ಕೆ ನಡೆದುಕೊಂಡು ಹೋಗುವಷ್ಟು ಹತ್ತಿರ</span>
-                <p>We are very close to the Sri Idagunji Mahaganapathi Temple. Stay overnight, take a fresh morning Darshana, and continue your journey.</p>
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1528712306091-edbb740ae46b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-users"></i> Fun for Groups</h3>
+                    <span class="kn-head kn">ಸ್ನೇಹಿತರ ಗುಂಪುಗಳಿಗೆ ಅಚ್ಚುಮೆಚ್ಚು</span>
+                    <p>In a group? You can <strong>cook outside within the gate</strong> and enjoy privacy in our 1-acre
+                        farm. Dormitory options available.</p>
+                    <p class="kn">ಸ್ನೇಹಿತರೊಂದಿಗೆ ಬಂದರೆ, ನೀವೇ ಅಡುಗೆ ಮಾಡಿಕೊಂಡು ಆನಂದಿಸಬಹುದು.</p>
+                </div>
             </div>
-        </div>
-        <div class="story-card" style="border-left-color: var(--accent);">
-            <div class="story-content">
-                <h3><i class="fas fa-bus"></i> School & Corporate Trips</h3>
-                <span class="kn-head kn">ಶಾಲೆ ಮತ್ತು ಕಾರ್ಪೊರೇಟ್ ಪ್ರವಾಸಗಳಿಗೆ ಉತ್ತಮ ಸ್ಥಳ</span>
-                <p>We are the best choice for large groups! We have <strong>Big Halls</strong> and open spaces perfect for school trips and corporate outings.</p>
-                <p>We provide <strong>Clean & Safe facilities</strong> with many restrooms (Inside & Outside) to handle large crowds comfortably.</p>
-                <p class="kn">ದೊಡ್ಡ ಹಾಲ್ ಮತ್ತು ಅನೇಕ ಶೌಚಾಲಯ (Restrooms) ವ್ಯವಸ್ಥೆ ಇದೆ. ಶಾಲಾ ಪ್ರವಾಸ ಮತ್ತು ಆಫೀಸ್ ಟ್ರಿಪ್‌ಗಳಿಗೆ ಇದು ಸೂಕ್ತವಾದ ಸ್ಥಳ.</p>
-            </div>
-        </div>
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-parking"></i> Spacious Parking & Safety</h3>
-                <span class="kn-head kn">ವಿಶಾಲವಾದ ಪಾರ್ಕಿಂಗ್ ಮತ್ತು ಸುರಕ್ಷತೆ</span>
-                <p>Coming by Bus or Tempo Traveller? No problem! We have <strong>huge parking space</strong> inside the gate.</p>
-                <p>It is a <strong>Clean, Safe & Gated</strong> property suitable for ladies and children.</p>
-                <p class="kn">ಬಸ್ಸು ಮತ್ತು ಕಾರು ನಿಲ್ಲಿಸಲು ವಿಶಾಲವಾದ ಪಾರ್ಕಿಂಗ್ ಇದೆ. ಸುರಕ್ಷಿತ ಮತ್ತು ಸ್ವಚ್ಛವಾದ ಸ್ಥಳ.</p>
-            </div>
-        </div>
 
-        <div class="story-card">
-            <div class="story-content">
-                <h3><i class="fas fa-rupee-sign"></i> Low Price & Safe for Families</h3>
-                <span class="kn-head kn">ಕಡಿಮೆ ದರದಲ್ಲಿ ಕುಟುಂಬದೊಂದಿಗೆ ಉಳಿಯಿರಿ</span>
-                <p><span class="highlight-tag">Save Money!</span> Stay here at a <strong>very low price</strong>. We provide Hot water, Kettle, Chairs, Cots, and Mattresses.</p>
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1606293926075-69a00dbfde81?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-gopuram"></i> Walk to Temple</h3>
+                    <span class="kn-head kn">ಇಡಗುಂಜಿ ದೇವಸ್ಥಾನಕ್ಕೆ ಹತ್ತಿರ</span>
+                    <p>We are very close to the <strong>Sri Idagunji Mahaganapathi Temple</strong>. Take a fresh morning
+                        Darshana easily.</p>
+                </div>
             </div>
+
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-bus"></i> School & Corporate Trips</h3>
+                    <span class="kn-head kn">ಶಾಲಾ ಪ್ರವಾಸ ಮತ್ತು ಆಫೀಸ್ ಟ್ರಿಪ್</span>
+                    <p>We have <strong>Big Halls</strong> and open spaces. <strong>Clean & Safe facilities</strong> with
+                        many restrooms (Inside & Outside) for large crowds.</p>
+                </div>
+            </div>
+
+            <div class="story-card scroll-animate">
+                <div class="story-img"
+                    style="background-image: url('');">
+                </div>
+                <div class="story-content">
+                    <h3><i class="fas fa-parking"></i> Spacious Parking</h3>
+                    <span class="kn-head kn">ವಿಶಾಲವಾದ ಪಾರ್ಕಿಂಗ್</span>
+                    <p>Coming by Bus or Tempo Traveller? We have <strong>huge parking space</strong> inside the gate.
+                        Safe for ladies and children.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div style="background-color: white; padding: 40px 0;">
-        <div class="container" style="padding-top: 0;">
-            <div class="section-title">
-                <h2>Facilities / ಸೌಲಭ್ಯಗಳು</h2>
-            </div>
-            <div class="facilities-grid">
-                <div class="facility-box">
-                    <i class="fas fa-parking"></i>
-                    <h4>Spacious Parking</h4>
-                    <div class="kn-small kn">ವಿಶಾಲವಾದ ಪಾರ್ಕಿಂಗ್</div>
+    <div class="facilities-section">
+        <div class="section-title">
+            <h2>Our Facilities <span class="kn" style="font-size:1.5rem">ಸೌಲಭ್ಯಗಳು</span></h2>
+        </div>
+        <div style="overflow: hidden; white-space: nowrap;">
+            <div class="slider-track">
+                <div class="slide"><i class="fas fa-parking"></i>
+                    <h4>Bus Parking</h4>
+                    <div class="kn">ಬಸ್ ಪಾರ್ಕಿಂಗ್</div>
                 </div>
-                <div class="facility-box">
-                    <i class="fas fa-restroom"></i>
-                    <h4>Hygienic Restrooms</h4>
-                    <div class="kn-small kn">ಶುಚಿತ್ವದ ಶೌಚಾಲಯ</div>
-                </div>
-                <div class="facility-box">
-                    <i class="fas fa-bed"></i>
-                    <h4>Comfortable Bedding</h4>
-                    <div class="kn-small kn">ಆರಾಮದಾಯಕ ಹಾಸಿಗೆ</div>
-                </div>
-                <div class="facility-box">
-                    <i class="fas fa-fire"></i>
+                <div class="slide"><i class="fas fa-fire"></i>
                     <h4>Hot Water</h4>
-                    <div class="kn-small kn">ಬಿಸಿ ನೀರಿನ ಸೌಲಭ್ಯ</div>
+                    <div class="kn">ಬಿಸಿ ನೀರು</div>
                 </div>
-                <div class="facility-box">
-                    <i class="fas fa-utensils"></i>
-                    <h4>Self-Cooking</h4>
-                    <div class="kn-small kn">ಅಡುಗೆ ಮಾಡಿಕೊಳ್ಳಬಹುದು</div>
+                <div class="slide"><i class="fas fa-restroom"></i>
+                    <h4>Many Restrooms</h4>
+                    <div class="kn">ಶೌಚಾಲಯಗಳು</div>
                 </div>
-                <div class="facility-box">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="slide"><i class="fas fa-utensils"></i>
+                    <h4>Self Cooking</h4>
+                    <div class="kn">ಅಡುಗೆ ಸೌಲಭ್ಯ</div>
+                </div>
+                <div class="slide"><i class="fas fa-shield-alt"></i>
                     <h4>Gated Safety</h4>
-                    <div class="kn-small kn">ಸುರಕ್ಷಿತ ಆವರಣ</div>
+                    <div class="kn">ಸುರಕ್ಷಿತ ಆವರಣ</div>
+                </div>
+                <div class="slide"><i class="fas fa-users"></i>
+                    <h4>Big Halls</h4>
+                    <div class="kn">ದೊಡ್ಡ ಹಾಲ್</div>
+                </div>
+                <div class="slide"><i class="fas fa-bed"></i>
+                    <h4>Comfort Beds</h4>
+                    <div class="kn">ಹಾಸಿಗೆ ವ್ಯವಸ್ಥೆ</div>
+                </div>
+                <div class="slide"><i class="fas fa-parking"></i>
+                    <h4>Bus Parking</h4>
+                    <div class="kn">ಬಸ್ ಪಾರ್ಕಿಂಗ್</div>
+                </div>
+                <div class="slide"><i class="fas fa-fire"></i>
+                    <h4>Hot Water</h4>
+                    <div class="kn">ಬಿಸಿ ನೀರು</div>
+                </div>
+                <div class="slide"><i class="fas fa-restroom"></i>
+                    <h4>Many Restrooms</h4>
+                    <div class="kn">ಶೌಚಾಲಯಗಳು</div>
+                </div>
+                <div class="slide"><i class="fas fa-utensils"></i>
+                    <h4>Self Cooking</h4>
+                    <div class="kn">ಅಡುಗೆ ಸೌಲಭ್ಯ</div>
+                </div>
+                <div class="slide"><i class="fas fa-shield-alt"></i>
+                    <h4>Gated Safety</h4>
+                    <div class="kn">ಸುರಕ್ಷಿತ ಆವರಣ</div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Babanna Farmhouse.</p>
-        <p>Idagunji, Honnavar, Karnataka</p>
+        <p>© 2026 Babanna Farmhouse</p>
+        <p>Idagunji, Honavara, Karnataka</p>
     </footer>
 
+    <script>
+        // Hero Slider
+        let slides = document.querySelectorAll('.hero-slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+    </script>
+
 </body>
+
 </html>
