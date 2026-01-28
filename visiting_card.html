@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&family=Baloo+Tamma+2:wght@600&display=swap');
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: #222; 
+            padding: 40px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 50px; 
+        }
+
+        /* --- CARD CONTAINER --- */
+        .card {
+            width: 350px; 
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- FRONT SIDE --- */
+        .front {
+            /* UPDATED: Using local image 'imgback.png' */
+            background-image: 
+                linear-gradient(to bottom, rgba(20, 60, 20, 0.85), rgba(30, 80, 30, 0.7)),
+                url('backimg.png'); 
+            
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .front::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(255, 202, 40, 0.5); border-radius: 10px; pointer-events: none;
+        }
+        .front h1 { margin: 0; font-size: 26px; font-weight: 700; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.6); letter-spacing: 0.5px; }
+        .front .kn-name { font-family: 'Baloo Tamma 2', cursive; font-size: 16px; color: #ffca28; margin-bottom: 2px; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+        .tagline { font-size: 11px; font-weight: 400; color: #e8f5e9; margin-bottom: 12px; font-style: italic; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+        
+        .speciality-box {
+            background: rgba(0, 0, 0, 0.5); border-top: 2px solid #ffca28; border-radius: 6px;
+            padding: 8px 12px; backdrop-filter: blur(2px); margin-top: 5px;
+        }
+        .speciality-label { font-size: 8px; color: #ddd; letter-spacing: 1px; margin-bottom: 2px; }
+        .speciality-text { font-size: 9px; font-weight: 600; color: #ffca28; line-height: 1.4; }
+
+        /* --- BACK SIDE --- */
+        .back {
+            background-color: #fdfdfd;
+            background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+            background-size: 10px 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .web-header {
+            background: #2e7d32; color: white; text-align: center; padding: 8px 0;
+            font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .web-header span { color: #ffca28; }
+
+        .middle-section { display: flex; flex: 1; padding: 10px 15px; gap: 10px; align-items: center; }
+
+        .map-area { flex: 2; position: relative; height: 90px; border-right: 1px dashed #ccc; padding-right: 10px; }
+        .road-h { position: absolute; top: 20px; left: 0; right: 0; height: 5px; background: #555; border-radius: 5px; }
+        .road-v { position: absolute; top: 20px; left: 50%; width: 5px; height: 50px; background: #777; transform: translateX(-50%); }
+        
+        .label-city { font-size: 8px; font-weight: 700; color: #333; position: absolute; top: 0; }
+        .label-city.hona { left: 0; }
+        .label-city.muru { right: 0; text-align: right; }
+        
+        .label-time { font-size: 7px; color: #d32f2f; font-weight: bold; position: absolute; top: 12px; background: #fdfdfd; padding: 0 2px; }
+        .label-time.left { left: 15%; }
+        .label-time.right { right: 15%; }
+
+        .label-turn { font-size: 7px; color: #1565c0; font-weight: bold; position: absolute; top: 27px; }
+        .label-turn.left { left: 10%; }
+        .label-turn.right { right: 10%; }
+        
+        .cross-point { position: absolute; top: 26px; left: 50%; transform: translateX(-50%); font-size: 7px; background: white; border: 1px solid #999; padding: 0 2px; border-radius: 3px; }
+        .marker-box { position: absolute; top: 60px; left: 50%; transform: translateX(-10%); display: flex; align-items: center; gap: 4px; }
+        .marker-dot { width: 10px; height: 10px; background: #ffca28; border: 2px solid #2e7d32; border-radius: 50%; }
+        .marker-text { font-size: 9px; font-weight: 800; color: #2e7d32; line-height: 1; }
+        .marker-sub { font-size: 7px; font-weight: normal; color: #555; }
+
+        .qr-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .qr-img { width: 60px; height: 60px; border: 1px solid #ddd; padding: 2px; background: white; }
+        .qr-text { font-size: 8px; font-weight: 700; color: #2e7d32; margin-top: 3px; text-transform: uppercase; text-align: center; }
+
+        .footer-bar { background: #fff; border-top: 2px solid #ffca28; padding: 8px 15px; display: flex; justify-content: center; align-items: center; }
+        .phone-box { display: flex; gap: 15px; font-size: 11px; font-weight: 700; color: #333; }
+
+        .label-display { color: #888; margin-bottom: 10px; font-size: 12px; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div>
+        <div class="label-display" style="text-align: center;">FRONT SIDE</div>
+        <div class="card front">
+            <div class="kn-name">ಬಾಬಣ್ಣ ಫಾರ್ಮ್‌ಹೌಸ್</div>
+            <h1>Babanna Farmhouse</h1>
+            <div class="tagline">The Perfect Stopover: Stay Comfortably, Explore Everywhere</div>
+            <div class="speciality-box">
+                <div class="speciality-label">PERFECT FOR:</div>
+                <div class="speciality-text">FAMILY • GROUPS • SCHOOL<br>COLLEGE • CORPORATE TRIPS</div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="label-display" style="text-align: center;">BACK SIDE</div>
+        <div class="card back">
+            <div class="web-header">www.<span>babannafarmhouse</span>.com</div>
+
+            <div class="middle-section">
+                <div class="map-area">
+                    <div class="road-h"></div>
+                    <div class="label-city hona">HONAVARA</div>
+                    <div class="label-city muru">MURUDESHWARA</div>
+                    <div class="label-time left">10 Min</div>
+                    <div class="label-time right">10 Min</div>
+                    <div class="label-turn left">↰ Left</div>
+                    <div class="label-turn right">Right ↱</div>
+                    <div class="road-v"></div>
+                    <div class="cross-point">Idagunji Cross</div>
+                    <div class="marker-box">
+                        <div class="marker-dot"></div>
+                        <div class="marker-text">BABANNA<br>FARM<div class="marker-sub">1.5 KM (Right Side)</div></div>
+                    </div>
+                </div>
+
+                <div class="qr-area">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://babannafarmhouse.com" class="qr-img" alt="QR">
+                    <div class="qr-text">Scan for<br>Location</div>
+                </div>
+            </div>
+
+            <div class="footer-bar">
+                <div class="phone-box">
+                    <span>📞 73384 98962</span>
+                    <span>📞 97436 40036</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
