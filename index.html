@@ -386,9 +386,7 @@
         <div class="story-grid">
 
             <div class="story-card scroll-animate">
-                <div class="story-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                </div>
+                
                 <div class="story-content">
                     <h3><i class="fas fa-map-marked-alt"></i> The Perfect Stopover</h3>
                     <span class="kn-head kn">ಮುರುಡೇಶ್ವರ ಮತ್ತು ಹೊನ್ನಾವರ ಮಧ್ಯೆ</span>
@@ -531,7 +529,410 @@
             </div>
         </div>
     </div>
+<div class="roadmap-container">
+    <div class="section-title">
+        <h2>Location Map / ದಾರಿ ನಕ್ಷೆ</h2>
+    </div>
 
+    <div class="map-graphic">
+        
+        <div class="highway">
+            <div class="highway-line"></div>
+            
+            <div class="location-point left">
+                <div class="city-name">HONAVARA</div>
+                <div class="travel-time">10 Mins</div>
+                <div class="direction-arrow">↰ Turn Left</div>
+            </div>
+
+            <div class="location-point right">
+                <div class="city-name">MURUDESHWARA</div>
+                <div class="travel-time">10 Mins</div>
+                <div class="direction-arrow">Turn Right ↱</div>
+            </div>
+        </div>
+
+        <div class="cross-road">
+            <div class="road-line"></div>
+            <div class="cross-label">Idagunji Cross</div>
+
+            <div class="farm-location">
+                <div class="farm-icon"><i class="fas fa-home"></i></div>
+                <div class="farm-details">
+                    <strong>BABANNA FARMHOUSE</strong>
+                    <span>1.5 KM from Cross</span>
+                </div>
+                <div class="side-indicator">(Right Side)</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* --- ROADMAP STYLES --- */
+    .roadmap-container {
+        background: white;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .map-graphic {
+        position: relative;
+        max-width: 600px;
+        height: 300px;
+        margin: 40px auto 0;
+        background-color: #f9fdf9; /* Very light green bg */
+        border: 2px dashed #a5d6a7; /* Dashed border looks like a map area */
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* Horizontal Highway */
+    .highway {
+        position: absolute;
+        bottom: 40px;
+        left: 20px;
+        right: 20px;
+        height: 60px;
+    }
+    .highway-line {
+        position: absolute;
+        top: 50%;
+        left: 0; right: 0;
+        height: 12px;
+        background: #555;
+        border-radius: 6px;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    /* Highway Striping */
+    .highway-line::after {
+        content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px;
+        background: repeating-linear-gradient(90deg, #fff 0, #fff 10px, transparent 10px, transparent 20px);
+        transform: translateY(-50%);
+    }
+
+    /* City Points */
+    .location-point {
+        position: absolute; top: -50px; z-index: 2; text-align: center;
+    }
+    .location-point.left { left: 0; }
+    .location-point.right { right: 0; }
+
+    .city-name { font-weight: 800; color: #2e7d32; font-size: 1.1rem; }
+    .travel-time { background: #ffca28; color: #000; font-size: 0.8rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 5px; }
+    .direction-arrow { color: #1565c0; font-weight: bold; font-size: 0.9rem; margin-top: 5px; }
+
+    /* Vertical Road */
+    .cross-road {
+        position: absolute;
+        bottom: 70px; /* Connects to highway */
+        left: 50%;
+        width: 40px;
+        height: 180px;
+        transform: translateX(-50%);
+    }
+    .road-line {
+        width: 12px;
+        height: 100%;
+        background: #777;
+        margin: 0 auto;
+        border-radius: 6px 6px 0 0;
+    }
+    .cross-label {
+        position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%);
+        background: white; border: 1px solid #ccc; padding: 2px 8px; font-size: 0.8rem; font-weight: bold; color: #d32f2f;
+        z-index: 5; white-space: nowrap;
+    }
+
+    /* Farmhouse Marker */
+    .farm-location {
+        position: absolute;
+        top: 30px; /* Distance up the road */
+        left: 25px; /* Push to the RIGHT side of the 12px road */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .farm-icon {
+        font-size: 1.5rem; color: #ffca28;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        animation: bounce 2s infinite;
+    }
+    
+    .farm-details {
+        background: #2e7d32; color: white;
+        padding: 8px 12px; border-radius: 0 10px 10px 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        position: relative;
+    }
+    /* Triangle pointing to road */
+    .farm-details::before {
+        content: ''; position: absolute; top: 0; left: -8px;
+        border-top: 10px solid #2e7d32; border-left: 10px solid transparent;
+    }
+
+    .farm-details strong { display: block; font-size: 0.9rem; line-height: 1.2; }
+    .farm-details span { font-size: 0.75rem; color: #ffecb3; }
+    .side-indicator { color: #555; font-size: 0.75rem; font-weight: bold; margin-top: 5px; margin-left: 5px; }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+        60% {transform: translateY(-5px);}
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 600px) {
+        .map-graphic { height: 350px; margin-top: 60px; }
+        .location-point { top: -60px; }
+        .city-name { font-size: 0.9rem; }
+    }
+    /* --- NEARBY PLACES STYLES --- */
+    .places-section {
+        background-color: #fafafa;
+        padding: 60px 0;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        color: #d84315; /* Default reddish for temples */
+        margin: 40px 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+        display: flex; align-items: center; gap: 10px;
+    }
+
+    .places-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive Grid */
+        gap: 20px;
+    }
+
+    .place-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #eee;
+    }
+    .place-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .place-img {
+        height: 140px;
+        background-color: #ddd;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .dist-badge {
+        position: absolute;
+        bottom: 10px; right: 10px;
+        background: rgba(0,0,0,0.7);
+        color: #ffb300;
+        font-weight: bold;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid #ffb300;
+    }
+
+    .place-info {
+        padding: 15px;
+    }
+    .place-info h4 {
+        margin: 0 0 5px;
+        font-size: 1rem;
+        color: #333;
+        font-weight: 700;
+    }
+    .place-info p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.4;
+    }
+
+    /* Mobile Tweaks */
+    @media (max-width: 600px) {
+        .places-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+        .place-img { height: 100px; }
+        .place-info { padding: 10px; }
+        .place-info h4 { font-size: 0.9rem; }
+        .place-info p { font-size: 0.75rem; }
+    }
+</style>
+<div class="places-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Explore Nearby / ಹತ್ತಿರದ ಪ್ರೇಕ್ಷಣೀಯ ಸ್ಥಳಗಳು</h2>
+            <p style="color: #666; margin-top: 10px;">Babanna Farmhouse is the perfect center point to visit all these places.</p>
+        </div>
+
+        <h3 class="category-title"><i class="fas fa-gopuram"></i> Divine Temples (ದೇವಸ್ಥಾನಗಳು)</h3>
+        <div class="places-grid">
+            
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e4/Idagunji_Ganesha_Temple.jpg');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Sri Idagunji Ganapathi</h4>
+                    <p>A famous ancient temple. Just a walkable distance away.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Murudeshwara_Shiva.jpg/800px-Murudeshwara_Shiva.jpg');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Murudeshwara Temple</h4>
+                    <p>World's second tallest Shiva statue & Gopuram by the beach.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Kodlamane.jpg');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Kodlamane Shree Vishnumurthy</h4>
+                    <p>An ancient hidden temple in the hills. Very peaceful.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-color: #ffcc80;">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Gunavante Temple</h4>
+                    <p>Historical Sambhulingeshwara Temple (Pancha Linga).</p>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 class="category-title" style="color: #0277bd;"><i class="fas fa-water"></i> Beaches & Nature (ಬೀಚ್ ಮತ್ತು ನಿಸರ್ಗ)</h3>
+        <div class="places-grid">
+            
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Vinayaka Vana</h4>
+                    <p>A beautiful garden and nature park near Idagunji.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Apsarakonda Falls & Park</h4>
+                    <p>Waterfall facing the sea with a beautiful hill-top park.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://images.unsplash.com/photo-1629217325686-22765d70e6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Kandla Boardwalk</h4>
+                    <p>Walk through the green mangrove forests in Honavara.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Basavaraja_Durga_Island.jpg/800px-Basavaraja_Durga_Island.jpg');">
+                   
+                </div>
+                <div class="place-info">
+                    <h4>Basavaraj Durga Island</h4>
+                    <p>An island fort in the sea. Boat ride available from Honavar.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Manki Beach</h4>
+                    <p>A quiet and scenic beach nearby.</p>
+                </div>
+            </div>
+
+             <div class="place-card">
+                <div class="place-img" style="background-color: #81d4fa;">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Ramathirtha</h4>
+                    <p>Beautiful water tank and coastal view point in Honavara.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 class="category-title" style="color: #e65100;"><i class="fas fa-car-side"></i> Day Trips (ದೂರದ ಪ್ರವಾಸ)</h3>
+        <div class="places-grid">
+            
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Mirjan_Fort_01.jpg/800px-Mirjan_Fort_01.jpg');">
+                   
+                </div>
+                <div class="place-info">
+                    <h4>Mirjan Fort</h4>
+                    <p>A historical fort covered in greenery. Great for photography.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://images.unsplash.com/photo-1594042861676-47b2938166c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Gokarna & Om Beach</h4>
+                    <p>Famous Mahabaleshwar temple and trekking beaches.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Vibhooti_Falls.jpg/800px-Vibhooti_Falls.jpg');">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Vibhoothi Falls</h4>
+                    <p>A stunning waterfall in the forest. A must-visit.</p>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-img" style="background-color: #795548;">
+                    
+                </div>
+                <div class="place-info">
+                    <h4>Yana Caves</h4>
+                    <p>Unique massive rock formations in the deep forest.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
     <footer>
     <p>© 2026 Babanna Farmhouse</p>
     <p>Idagunji, Honavara, Karnataka</p>
