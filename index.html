@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Babanna Farmhouse | Nature Homestay in Idagunji</title>
+    <title>Babanna Farmhouse | Nature Homestay in Honnavara,Idagunji,Murudeshwara</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Baloo+Tamma+2:wght@400;700&display=swap"
@@ -605,200 +605,243 @@
             animation-play-state: paused;
         }
 
-        /* --- ROADMAP STYLES --- */
         .roadmap-container {
-            background: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
+        background: white;
+        padding: 80px 20px;
+        text-align: center;
+    }
 
+    .map-graphic {
+        position: relative;
+        max-width: 800px;
+        min-height: 400px; /* Changed from fixed height */
+        margin: 60px auto 0;
+        background-color: #f9fdf9;
+        border: 3px dashed #a5d6a7;
+        border-radius: 30px;
+        box-shadow: 0 10px 45px rgba(0,0,0,0.1);
+        padding: 40px;
+    }
+
+    .highway {
+        position: absolute;
+        bottom: 80px;
+        left: 40px;
+        right: 40px;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .highway-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 16px;
+        background: #444;
+        border-radius: 8px;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+    .highway-line::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: repeating-linear-gradient(90deg, #fff 0, #fff 15px, transparent 15px, transparent 30px);
+        transform: translateY(-50%);
+    }
+
+    .location-point {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 150px;
+        margin-top: -140px; /* Pull labels above the road */
+    }
+
+    .city-name {
+        font-weight: 800;
+        color: #2e7d32;
+        font-size: 1.2rem;
+        background: #f9fdf9;
+        padding: 2px 8px;
+    }
+
+    .travel-time {
+        background: #ffca28;
+        color: #000;
+        font-size: 0.85rem;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    .direction-arrow {
+        color: #1565c0;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+
+    .cross-road {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        width: 60px;
+        height: calc(100% - 120px);
+        transform: translateX(-50%);
+    }
+
+    .road-line {
+        width: 16px;
+        height: 100%;
+        background: #777;
+        margin: 0 auto;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .cross-label {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        background: white;
+        border: 2px solid #ccc;
+        padding: 6px 14px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #d32f2f;
+        z-index: 5;
+        white-space: nowrap;
+        border-radius: 4px;
+    }
+
+    .farm-location {
+        position: absolute;
+        top: 20%;
+        left: 45px; /* Positioned to the right of the vertical road */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        width: 200px;
+    }
+
+    .farm-icon {
+        font-size: 2.5rem;
+        color: #ffca28;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        animation: bounce 2s infinite;
+    }
+
+    .farm-details {
+        background: #2e7d32;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 0 14px 14px 14px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        margin-top: 8px;
+    }
+
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 600px) {
         .map-graphic {
-            position: relative;
-            max-width: 750px;
-            height: 380px;
-            margin: 60px auto 0;
-            background-color: #f9fdf9;
-            border: 3px dashed #a5d6a7;
-            border-radius: 30px;
-            box-shadow: 0 10px 45px rgba(0, 0, 0, 0.1);
+            height: auto;
+            min-height: 550px;
+            padding: 20px;
+            margin-top: 30px;
         }
 
+        /* Rotate the highway to be vertical for mobile */
         .highway {
-            position: absolute;
-            bottom: 70px;
-            left: 40px;
-            right: 40px;
-            height: 70px;
+            bottom: 40px;
+            left: 50%;
+            right: auto;
+            width: 70px;
+            height: 450px;
+            flex-direction: column;
+            transform: translateX(-50%);
         }
 
         .highway-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 16px;
-            background: #555;
-            border-radius: 8px;
-            transform: translateY(-50%);
-            z-index: 1;
+            width: 16px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
         }
 
         .highway-line::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: repeating-linear-gradient(90deg, #fff 0, #fff 15px, transparent 15px, transparent 30px);
-            transform: translateY(-50%);
+            width: 3px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            background: repeating-linear-gradient(0deg, #fff 0, #fff 15px, transparent 15px, transparent 30px);
+            transform: translateX(-50%);
         }
 
         .location-point {
-            position: absolute;
-            top: -70px;
-            z-index: 2;
-            text-align: center;
+            margin-top: 0;
+            width: 120px;
         }
 
+        /* Position cities on either side of the vertical highway */
         .location-point.left {
-            left: 0;
+            position: absolute;
+            top: 0;
+            left: -130px;
+            text-align: right;
         }
 
         .location-point.right {
-            right: 0;
-        }
-
-        .city-name {
-            font-weight: 800;
-            color: #2e7d32;
-            font-size: 1.3rem;
-        }
-
-        .travel-time {
-            background: #ffca28;
-            color: #000;
-            font-size: 0.9rem;
-            font-weight: bold;
-            padding: 5px 12px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .direction-arrow {
-            color: #1565c0;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-
-        .cross-road {
             position: absolute;
-            bottom: 100px;
-            left: 50%;
-            width: 60px;
-            height: 220px;
-            transform: translateX(-50%);
-        }
-
-        .road-line {
-            width: 16px;
-            height: 100%;
-            background: #777;
-            margin: 0 auto;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .cross-label {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border: 2px solid #ccc;
-            padding: 6px 14px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #d32f2f;
-            z-index: 5;
-            white-space: nowrap;
-        }
-
-        .farm-location {
-            position: absolute;
-            top: 45px;
-            left: 35px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            bottom: 0;
+            right: -130px;
             text-align: left;
         }
 
-        .farm-icon {
-            font-size: 2.2rem;
-            color: #ffca28;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            animation: bounce 2s infinite;
+        .cross-road {
+            left: 50%;
+            top: 50%;
+            width: 250px;
+            height: 16px;
+            transform: translate(-50%, -50%);
         }
 
+        .road-line {
+            width: 100%;
+            height: 16px;
+        }
+
+        .cross-label {
+            bottom: -40px;
+            left: 50%;
+        }
+
+        .farm-location {
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            align-items: center;
+            text-align: center;
+        }
+        
         .farm-details {
-            background: #2e7d32;
-            color: white;
-            padding: 14px 18px;
-            border-radius: 0 14px 14px 14px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-            position: relative;
-            margin-top: 8px;
+            border-radius: 14px;
         }
-
+        
         .farm-details::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -12px;
-            border-top: 14px solid #2e7d32;
-            border-left: 14px solid transparent;
+            display: none;
         }
-
-        .farm-details strong {
-            display: block;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-
-        .farm-details span {
-            font-size: 0.85rem;
-            color: #ffecb3;
-        }
-
-        .side-indicator {
-            color: #555;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-15px);
-            }
-
-            60% {
-                transform: translateY(-8px);
-            }
-        }
-
+    }
         /* --- NEARBY PLACES STYLES --- */
         .places-section {
             background-color: #fafafa;
@@ -1762,45 +1805,43 @@
     </div>
 
     <div class="roadmap-container" id="location">
-        <div class="section-title">
-            <h2>Location Map / ದಾರಿ ನಕ್ಷೆ</h2>
-            <p>Perfectly located between two major tourist destinations</p>
+    <div class="section-title">
+        <h2>Location Map / ದಾರಿ ನಕ್ಷೆ</h2>
+        <p>Perfectly located between two major tourist destinations</p>
+    </div>
+
+    <div class="map-graphic">
+        <div class="highway">
+            <div class="highway-line"></div>
+
+            <div class="location-point left">
+                <div class="city-name">HONAVARA</div>
+                <div class="travel-time">10 Mins</div>
+                <div class="direction-arrow">↰ Turn Left</div>
+            </div>
+
+            <div class="location-point right">
+                <div class="city-name">MURUDESHWARA</div>
+                <div class="travel-time">10 Mins</div>
+                <div class="direction-arrow">Turn Right ↱</div>
+            </div>
         </div>
 
-        <div class="map-graphic">
+        <div class="cross-road">
+            <div class="road-line"></div>
+            <div class="cross-label">Idagunji Cross</div>
 
-            <div class="highway">
-                <div class="highway-line"></div>
-
-                <div class="location-point left">
-                    <div class="city-name">HONAVARA</div>
-                    <div class="travel-time">10 Mins</div>
-                    <div class="direction-arrow">↰ Turn Left</div>
+            <div class="farm-location">
+                <div class="farm-icon"><i class="fas fa-home"></i></div>
+                <div class="farm-details">
+                    <strong>BABANNA FARMHOUSE</strong>
+                    <span>1.5 KM from Cross</span>
                 </div>
-
-                <div class="location-point right">
-                    <div class="city-name">MURUDESHWARA</div>
-                    <div class="travel-time">10 Mins</div>
-                    <div class="direction-arrow">Turn Right ↱</div>
-                </div>
+                <div class="side-indicator">(Right Side)</div>
             </div>
-
-            <div class="cross-road">
-                <div class="road-line"></div>
-                <div class="cross-label">Idagunji Cross</div>
-
-                <div class="farm-location">
-                    <div class="farm-icon"><i class="fas fa-home"></i></div>
-                    <div class="farm-details">
-                        <strong>BABANNA FARMHOUSE</strong>
-                        <span>1.5 KM from Cross</span>
-                    </div>
-                    <div class="side-indicator">(Right Side)</div>
-                </div>
-            </div>
-
         </div>
     </div>
+</div>
 
     <div class="places-section" id="places">
         <div class="container">
