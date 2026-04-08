@@ -1,11 +1,20 @@
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-  # Resort Website Redesign
+# Run and deploy your AI Studio app
 
-  This is a code bundle for Resort Website Redesign. The original project is available at https://www.figma.com/design/zUHKBvit2kDOwat5YoHAEK/Resort-Website-Redesign.
+This contains everything you need to run your app locally.
 
-  ## Running the code
+View your app in AI Studio: https://ai.studio/apps/2fc0ff28-3369-41e7-a0a2-4388b553e528
 
-  Run `npm i` to install the dependencies.
+## Run Locally
 
-  Run `npm run dev` to start the development server.
-  
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
