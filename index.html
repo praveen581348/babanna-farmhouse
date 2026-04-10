@@ -151,6 +151,9 @@
                 <button @click="bookingModal = true" class="bg-accent text-primary-dark px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 shadow-xl hover:bg-white hover:scale-105 transition-all w-full sm:w-auto">
                     <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Enquiry
                 </button>
+                <a href="https://maps.app.goo.gl/Th2b8QuhY9uPPpqX9" target="_blank" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 shadow-xl hover:bg-blue-700 hover:scale-105 transition-all w-full sm:w-auto">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i> Locate on Map
+                </a>
             </div>
         </div>
     </header>
@@ -391,57 +394,217 @@
     </section>
 
     <!-- Explore Nearby -->
-    <section id="places" class="py-24 bg-white">
+    <section id="places" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl sm:text-5xl font-bold text-primary mb-4">Explore Nearby / ಹತ್ತಿರದ ಸ್ಥಳಗಳು</h2>
                 <div class="w-24 h-1.5 bg-accent mx-auto rounded-full mb-6"></div>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Babanna Farmhouse is the perfect center point to visit all these amazing places</p>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover the gems of coastal Karnataka located just minutes away from our farmhouse.</p>
             </div>
 
-            <div class="space-y-16">
-                <!-- Temples -->
-                <div>
-                    <h3 class="text-2xl font-bold text-orange-600 mb-8 border-b-4 border-gray-100 pb-4 flex items-center gap-4">Divine Temples <span class="text-xl font-kannada text-primary">ದೇವಸ್ಥಾನಗಳು</span></h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1582655299221-e83e79d3e93e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Sri Idagunji Ganapathi</h4><p class="text-gray-600 text-xs leading-relaxed">Ancient Ganesha temple with powerful blessings. Walkable from our farmhouse.</p></div>
-                        </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Murudeshwara Temple</h4><p class="text-gray-600 text-xs leading-relaxed">World's second tallest Shiva statue & magnificent Gopuram by the sea.</p></div>
-                        </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1582655299221-e83e79d3e93e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Kodlamane Shree Vishnumurthy</h4><p class="text-gray-600 text-xs leading-relaxed">Ancient hidden temple in the Western Ghats hills. Very peaceful.</p></div>
-                        </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Gunavante Temple</h4><p class="text-gray-600 text-xs leading-relaxed">Historical Sambhulingeshwara Temple with Pancha Linga significance.</p></div>
-                        </div>
+            <!-- Nearest Places Grid (No Photos) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">
+                <!-- Idagunji -->
+                <div class="group p-6 rounded-3xl bg-orange-50 border-2 border-transparent hover:border-orange-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="landmark" class="w-6 h-6 text-orange-600"></i>
                     </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Idagunji Temple</h4>
+                    <p class="text-orange-700 font-kannada font-bold mb-2">ಇಡಗುಂಜಿ ದೇವಸ್ಥಾನ</p>
+                    <p class="text-gray-600 text-sm">Famous Ganapathi temple, a spiritual landmark of the region.</p>
                 </div>
 
-                <!-- Nature -->
-                <div>
-                    <h3 class="text-2xl font-bold text-blue-600 mb-8 border-b-4 border-gray-100 pb-4 flex items-center gap-4">Beaches & Nature <span class="text-xl font-kannada text-primary">ಬೀಚ್ ಮತ್ತು ನಿಸರ್ಗ</span></h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1520697830682-aac88579d9f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Apsarakonda Falls</h4><p class="text-gray-600 text-xs leading-relaxed">Stunning waterfall cascading into the sea with a beautiful hill-top park.</p></div>
+                <!-- Nilagod -->
+                <div class="group p-6 rounded-3xl bg-orange-50 border-2 border-transparent hover:border-orange-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="landmark" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Nilagod Temple</h4>
+                    <p class="text-orange-700 font-kannada font-bold mb-2">ನಿಲಗೋಡು ದೇವಸ್ಥಾನ</p>
+                    <p class="text-gray-600 text-sm">A peaceful local temple known for its serene atmosphere.</p>
+                </div>
+
+                <!-- Kudlamane -->
+                <div class="group p-6 rounded-3xl bg-orange-50 border-2 border-transparent hover:border-orange-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="landmark" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Kudlamane Temple</h4>
+                    <p class="text-orange-700 font-kannada font-bold mb-2">ಕುಡ್ಲಮನೆ ದೇವಸ್ಥಾನ</p>
+                    <p class="text-gray-600 text-sm">Ancient temple nestled in the hills with historical significance.</p>
+                </div>
+
+                <!-- Vinayaka Vana -->
+                <div class="group p-6 rounded-3xl bg-green-50 border-2 border-transparent hover:border-green-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palmtree" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Vinayaka Vana</h4>
+                    <p class="text-green-700 font-kannada font-bold mb-2">ವಿನಾಯಕ ವನ</p>
+                    <p class="text-gray-600 text-sm">A lush green garden space dedicated to Lord Ganesha.</p>
+                </div>
+
+                <!-- Murudeshwara -->
+                <div class="group p-6 rounded-3xl bg-blue-50 border-2 border-transparent hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Murudeshwara</h4>
+                    <p class="text-blue-700 font-kannada font-bold mb-2">ಮುರುಡೇಶ್ವರ</p>
+                    <p class="text-gray-600 text-sm">Home to the world's second tallest Shiva statue and beach.</p>
+                </div>
+
+                <!-- Honavara -->
+                <div class="group p-6 rounded-3xl bg-blue-50 border-2 border-transparent hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="anchor" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Honavara</h4>
+                    <p class="text-blue-700 font-kannada font-bold mb-2">ಹೊನ್ನಾವರ</p>
+                    <p class="text-gray-600 text-sm">A beautiful port town known for its backwaters and bridges.</p>
+                </div>
+
+                <!-- Eco Beach -->
+                <div class="group p-6 rounded-3xl bg-cyan-50 border-2 border-transparent hover:border-cyan-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="waves" class="w-6 h-6 text-cyan-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Eco Beach</h4>
+                    <p class="text-cyan-700 font-kannada font-bold mb-2">ಇಕೋ ಬೀಚ್</p>
+                    <p class="text-gray-600 text-sm">Blue-flag certified clean beach with golden sands.</p>
+                </div>
+
+                <!-- Manki Beach -->
+                <div class="group p-6 rounded-3xl bg-cyan-50 border-2 border-transparent hover:border-cyan-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="waves" class="w-6 h-6 text-cyan-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Manki Beach</h4>
+                    <p class="text-cyan-700 font-kannada font-bold mb-2">ಮಂಕಿ ಬೀಚ್</p>
+                    <p class="text-gray-600 text-sm">A serene and less crowded beach for perfect relaxation.</p>
+                </div>
+
+                <!-- Madi Gudda -->
+                <div class="group p-6 rounded-3xl bg-emerald-50 border-2 border-transparent hover:border-emerald-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mountain" class="w-6 h-6 text-emerald-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Madi Gudda</h4>
+                    <p class="text-emerald-700 font-kannada font-bold mb-2">ಮಡಿ ಗುಡ್ಡ</p>
+                    <p class="text-gray-600 text-sm">Scenic hill offering panoramic views of the coast.</p>
+                </div>
+
+                <!-- Kandla Walk -->
+                <div class="group p-6 rounded-3xl bg-emerald-50 border-2 border-transparent hover:border-emerald-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="footprints" class="w-6 h-6 text-emerald-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Kandla Walk</h4>
+                    <p class="text-emerald-700 font-kannada font-bold mb-2">ಕಂಡ್ಲಾ ವಾಕ್</p>
+                    <p class="text-gray-600 text-sm">Enchanting mangrove boardwalk experience in Honavara.</p>
+                </div>
+
+                <!-- Apsarakonda Falls -->
+                <div class="group p-6 rounded-3xl bg-blue-50 border-2 border-transparent hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="droplets" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Apsarakonda Falls</h4>
+                    <p class="text-blue-700 font-kannada font-bold mb-2">ಅಪ್ಸರಕೊಂಡ ಜಲಪಾತ</p>
+                    <p class="text-gray-600 text-sm">Waterfall meeting the sea with a beautiful park.</p>
+                </div>
+
+                <!-- Mavinakurva -->
+                <div class="group p-6 rounded-3xl bg-indigo-50 border-2 border-transparent hover:border-indigo-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map" class="w-6 h-6 text-indigo-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Mavinakurva</h4>
+                    <p class="text-indigo-700 font-kannada font-bold mb-2">ಮಾವಿನಕುರ್ವಾ</p>
+                    <p class="text-gray-600 text-sm">A scenic island village known for its unique geography.</p>
+                </div>
+
+                <!-- Boating Places -->
+                <div class="group p-6 rounded-3xl bg-sky-50 border-2 border-transparent hover:border-sky-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-sky-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="ship" class="w-6 h-6 text-sky-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Boating Places</h4>
+                    <p class="text-sky-700 font-kannada font-bold mb-2">ಬೋಟಿಂಗ್ ಸ್ಥಳಗಳು</p>
+                    <p class="text-gray-600 text-sm">Enjoy backwater boating and river cruises.</p>
+                </div>
+
+                <!-- Sharavathi River -->
+                <div class="group p-6 rounded-3xl bg-sky-50 border-2 border-transparent hover:border-sky-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-sky-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="waves" class="w-6 h-6 text-sky-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Sharavathi River</h4>
+                    <p class="text-sky-700 font-kannada font-bold mb-2">ಶರಾವತಿ ನದಿ</p>
+                    <p class="text-gray-600 text-sm">The lifeline of the region, perfect for scenic views.</p>
+                </div>
+            </div>
+
+            <!-- Explore Uttara Kannada Block -->
+            <div class="relative rounded-[3rem] overflow-hidden bg-primary-dark p-8 sm:p-16 text-white shadow-2xl">
+                <!-- Decorative Background Elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+                
+                <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-4xl sm:text-6xl font-bold mb-6 leading-tight">Stay Here & Explore <span class="text-accent">Uttara Kannada</span></h2>
+                        <p class="text-primary-light font-kannada text-2xl sm:text-3xl font-bold mb-8">ಇಲ್ಲಿ ಉಳಿಯಿರಿ ಮತ್ತು ಉತ್ತರ ಕನ್ನಡವನ್ನು ಅನ್ವೇಷಿಸಿ</p>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-10">
+                            Babanna Farmhouse is your perfect base camp. Located centrally, you can easily plan day trips to the most iconic destinations of Uttara Kannada.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                                <i data-lucide="mountain" class="w-5 h-5 text-accent"></i>
+                                <span class="font-medium">Hills / ಬೆಟ್ಟಗಳು</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                                <i data-lucide="waves" class="w-5 h-5 text-accent"></i>
+                                <span class="font-medium">Beaches / ಬೀಚ್‌ಗಳು</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                                <i data-lucide="droplets" class="w-5 h-5 text-accent"></i>
+                                <span class="font-medium">Falls / ಜಲಪಾತಗಳು</span>
+                            </div>
                         </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1629217325686-22765d70e6c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Kandla Boardwalk</h4><p class="text-gray-600 text-xs leading-relaxed">Walk through enchanting green mangrove forests in Honavara.</p></div>
+                    </div>
+
+                    <div class="lg:w-1/2 grid grid-cols-2 gap-4 w-full">
+                        <!-- Gokarna -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Gokarna</h4>
+                            <p class="font-kannada text-white/80 text-lg">ಗೋಕರ್ಣ</p>
                         </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Eco Beach Honavara</h4><p class="text-gray-600 text-xs leading-relaxed">Clean, eco-friendly beach with golden sand and clear waters.</p></div>
+                        <!-- Sirsi -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Sirsi</h4>
+                            <p class="font-kannada text-white/80 text-lg">ಶಿರಸಿ</p>
                         </div>
-                        <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group">
-                            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                            <div class="p-6"><h4 class="font-bold text-gray-800 mb-2">Manki Beach</h4><p class="text-gray-600 text-xs leading-relaxed">A quiet, pristine and scenic beach perfect for swimming and relaxation.</p></div>
+                        <!-- Dandeli -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Dandeli</h4>
+                            <p class="font-kannada text-white/80 text-lg">ದಾಂಡೇಲಿ</p>
+                        </div>
+                        <!-- Siddapura -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Siddapura</h4>
+                            <p class="font-kannada text-white/80 text-lg">ಸಿದ್ದಾಪುರ</p>
+                        </div>
+                        <!-- Murudeshwara -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Murudeshwara</h4>
+                            <p class="font-kannada text-white/80 text-lg">ಮುರುಡೇಶ್ವರ</p>
+                        </div>
+                        <!-- Honavara -->
+                        <div class="bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-3xl transition-all group cursor-default">
+                            <h4 class="text-2xl font-bold text-accent mb-1">Honavara</h4>
+                            <p class="font-kannada text-white/80 text-lg">ಹೊನ್ನಾವರ</p>
                         </div>
                     </div>
                 </div>
@@ -458,6 +621,19 @@
                 <p class="text-lg text-gray-600">Perfectly located between two major tourist destinations</p>
             </div>
             
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="bg-white rounded-[40px] p-8 shadow-2xl border-4 border-primary/10 text-center">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="map" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-primary-dark mb-4">View on Google Maps</h3>
+                    <p class="text-gray-600 mb-8 text-lg">Get exact directions to Babanna Farmhouse from your current location.</p>
+                    <a href="https://maps.app.goo.gl/Th2b8QuhY9uPPpqX9" target="_blank" class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-xl shadow-xl transition-all hover:scale-105">
+                        <i data-lucide="navigation" class="w-6 h-6"></i> Open in Maps
+                    </a>
+                </div>
+            </div>
+
             <div class="max-w-4xl mx-auto">
                 <!-- Mobile View (Vertical Route) -->
                 <div class="md:hidden space-y-6 relative before:absolute before:left-[27px] before:top-0 before:bottom-0 before:w-1.5 before:bg-gray-300 before:rounded-full">
